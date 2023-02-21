@@ -4,22 +4,18 @@
 #ifndef _METL_H_
 #define _METL_H_
 
+#include <string>
+
 namespace metl { // Implementation.
-    class metl {
-        metl() {
-            // Code here...
-        }
+    class METL {
+    public:
+        METL(std::string clock_name);
+        ~METL(); // Stops the clock if clock hasn't stopped.
+        
+        METL& start();  // Starts the clock.
+        void stop();    // Manually stop the clock (recommended).
     }
 }
-
-#endif /* _METL_H_ */
-
-#else /* defined(NDEBUG) || defined(METLDEBUG) */
-#ifndef _METL_H_
-#define _METL_H_
-
-// Replace calls to nothing if not in debug mode.
-// #define metl::metl()
 
 #endif /* _METL_H_ */
 #endif /* defined(NDEBUG) || defined(METLDEBUG) */
