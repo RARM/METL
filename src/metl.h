@@ -16,7 +16,7 @@
  */
 
 /**
- * @def metl_stop_clock()
+ * @def metl_stop_lclock()
  * @brief 
  */
 
@@ -79,9 +79,9 @@ namespace metl {
         std::string name;
         bool stopped;
         bool started;
-        std::chrono::time_point<std::chrono::high_resolution_clock> start;
-        std::chrono::time_point<std::chrono::high_resolution_clock> end;
-    }
+        std::chrono::time_point<std::chrono::high_resolution_clock> t_start;
+        std::chrono::time_point<std::chrono::high_resolution_clock> t_end;
+    };
 
     class GlobalControl {
     private:
@@ -103,21 +103,21 @@ namespace metl {
          * @param name Clock name.
          */
         static void stop_clock(std::string name = "");
-    }
+    };
 }
 
 // Macros for using the library classes if in debug mode.
 
 #define metl_start_clock(X) metl::GlobalControl::start_clock(X)
 #define metl_stop_clock(X)  metl::GlobalControl::stop_clock(X)
-#define metl_stop_clock()   metl::GlobalControl::stop_clock()
+#define metl_stop_lclock()   metl::GlobalControl::stop_clock()
 
 #else /* defined(NDEBUG) || defined(METLDEBUG) */
 
 // Macro to replace for no code in no debug environments.
 #define metl_start_clock(X)
 #define metl_stop_clock(X)
-#define metl_stop_clock()
+#define metl_stop_lclock()
 
 #endif /* defined(NDEBUG) || defined(METLDEBUG) */
 #endif /* _METL_H_ */
